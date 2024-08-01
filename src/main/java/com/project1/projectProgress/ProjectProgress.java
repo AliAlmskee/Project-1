@@ -7,11 +7,13 @@ import com.project1.profile.WorkerProfile;
 import com.project1.project.data.ProjectStatus;
 import com.project1.rate.Rate;
 import com.project1.skill.Skill;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 import java.util.Date;
 import java.util.Set;
@@ -26,7 +28,16 @@ public class ProjectProgress {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private Date acceptDate;
+    @Nullable
     private Date deliveredAt;
-    @ManyToOne
-    private Rate rate;
+    @Nullable
+    @OneToOne
+    private Rate clientRate;
+    @Nullable
+    @OneToOne
+    private Rate workerRate;
+
+    @ReadOnlyProperty
+    @OneToOne
+    private Offer offer;
 }

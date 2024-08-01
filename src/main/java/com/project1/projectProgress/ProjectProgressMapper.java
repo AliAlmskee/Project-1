@@ -26,10 +26,6 @@ public abstract class ProjectProgressMapper {
     @Mapping(source = "projectCategoriesIds", target = "projectCategories")
     @Mapping(source = "clientProfileId", target = "client")
     abstract Project toEntity(CreateProjectRequest createProjectRequest);
-
-    ClientProfile idToClientProfile(Long id){
-        return ClientProfile.builder().id(id).build();
-    }
     Set<Skill> idsToSkills(Set<Long> ids){
         return ids.stream().map(aLong -> Skill.builder().id(aLong).build()).collect(Collectors.toSet());
     }

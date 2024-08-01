@@ -12,12 +12,13 @@ import com.project1.skill.SkillMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring", uses = {ClientProfileMapper.class, SkillMapper.class, CategoryMapper.class})
+@Mapper(componentModel = "spring", uses = {ClientProfileMapper.class, SkillMapper.class, CategoryMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public abstract class ProjectMapper {
     abstract ProjectResponse entityToResponse(Project project);
     abstract ProjectWithOfferCountResponse entityToResponse(ProjectWithOfferCount project);
@@ -31,9 +32,6 @@ public abstract class ProjectMapper {
     @Mapping(source = "clientProfileId", target = "client")
     abstract Project toEntity(CreateProjectRequest createProjectRequest);
 
-    ClientProfile idToClientProfile(Long id){
-        return ClientProfile.builder().id(id).build();
-    }
     Set<Skill> idsToSkills(Set<Long> ids){
         return ids.stream().map(aLong -> Skill.builder().id(aLong).build()).collect(Collectors.toSet());
     }

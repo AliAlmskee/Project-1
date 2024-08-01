@@ -18,4 +18,10 @@ public interface WorkerProfileMapper {
     WorkerProfile toEntity(WorkerProfileDTO workerProfileDTO);
     WorkerProfile toEntity(WorkerProfileRequest workerProfileRequest);
 
+    default Long getId(WorkerProfile workerProfile){
+        return workerProfile.getId();
+    }
+    default WorkerProfile map(Long id){
+        return WorkerProfile.builder().id(id).build();
+    }
 }
