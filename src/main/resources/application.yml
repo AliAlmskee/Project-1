@@ -3,9 +3,9 @@ spring:
     error:
       include-message: always
   datasource:
-    url: jdbc:postgresql://localhost:5432/project1
+    url: jdbc:postgresql://localhost:5432/student
     username: postgres
-    password: adminadmin
+    password: 1234
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
