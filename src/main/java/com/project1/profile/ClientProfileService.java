@@ -41,7 +41,7 @@ public class ClientProfileService {
         JobTitle jobTitle = jobTitleRepository.findById(clientProfileRequest.getJobTitleId()).orElseThrow(() -> new RuntimeException("jobTitle ID not found"));
        ClientProfile clientProfile = clientProfileMapper.toEntity(clientProfileRequest);
         clientProfile.setUser(currentAuditor);
-        clientProfile.setRate(2.5);
+        clientProfile.setRate(0.0);
         clientProfile.set_verified(false);
         clientProfile.setJobTitle(jobTitle);
         ClientProfile savedClientProfile = clientProfileRepository.save(clientProfile);

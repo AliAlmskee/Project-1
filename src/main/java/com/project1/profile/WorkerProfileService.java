@@ -45,7 +45,7 @@ public class WorkerProfileService {
         Category category = categoryRepository.findById(workerProfileRequest.getCategoryId()).orElseThrow(() -> new RuntimeException("jobTitle ID not found"));
         WorkerProfile workerProfile = workerProfileMapper.toEntity(workerProfileRequest);
         workerProfile.setUser(currentAuditor);
-        workerProfile.setRate(2.5);
+        workerProfile.setRate(0.0);
         workerProfile.set_verified(false);
         workerProfile.setJobTitle(jobTitle);
         workerProfile.setCategory(category);

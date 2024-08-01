@@ -1,5 +1,4 @@
 package com.project1.profile;
-import com.project1.category.Category;
 import com.project1.fileSystem.Photo;
 import com.project1.jobTitle.JobTitle;
 import com.project1.skill.Skill;
@@ -58,4 +57,8 @@ public class ClientProfile {
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
     private List<Skill> skills;
+
+    public void addRate(double rate, int count){
+        setRate((this.rate*count + rate) * (count+1));
+    }
 }
