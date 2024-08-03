@@ -1,6 +1,7 @@
 package com.project1.auditing;
 
 import com.project1.user.User;
+import com.project1.user.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,8 @@ public class AuditingController {
     }
 
     @GetMapping("/current-user")
-    public ResponseEntity<User> getCurrentUser() {
-        Optional<User> currentUser = auditAware.getCurrentUser();
+    public ResponseEntity<UserDTO> getCurrentUser() {
+        Optional<UserDTO> currentUser = auditAware.getCurrentUser2();
         return currentUser.map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.UNAUTHORIZED));
     }
