@@ -17,5 +17,5 @@ public class SecurityApplication {
 //		System.out.println(auditorAware.getCurrentAuditor());
 	}
 
-
+//
 }
