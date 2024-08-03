@@ -24,7 +24,7 @@ public class SkillController {
     public ResponseEntity<Map<String, Object>> getAllSkills(@PathVariable("catId") Long catId) {
         ResponseEntity<List<SkillResponse>> skills = skillService.getAllSkills(catId);
         Map<String, Object> response = new HashMap<>();
-        response.put("clientProfiles", skills);
+        response.put("skills", skills);
         return ResponseEntity.ok(response);
     }
 
