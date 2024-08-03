@@ -13,7 +13,6 @@ public record OfferResponse(
         String message,
         Long cost,
         Long deliveryTime,
-
         OfferStatus status,
         Date createDate,
         WorkerProfileDTO worker

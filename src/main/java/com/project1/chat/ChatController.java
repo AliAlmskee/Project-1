@@ -18,18 +18,17 @@ public class ChatController {
     private final ChatMessageService chatMessageService;
 
 
-
-    @MessageMapping("/chat")
-    public void processMessage(@Payload ChatMessage chatMessage) {
+    @MessageMapping("/chat" )
+    public void processMessage(ChatMessage chatMessage) {
         System.out.println();
-        System.out.println("ali");
+        System.out.println("controller: ali");
         ChatMessage savedMsg = chatMessageService.save(chatMessage);
         messagingTemplate.convertAndSendToUser(
                 chatMessage.getRecipientId(), "/queue/messages",
                 new ChatNotification(
                         savedMsg.getId(),
                         savedMsg.getSenderId(),
-                         savedMsg.getRecipientId(),
+                        savedMsg.getRecipientId(),
                         savedMsg.getContent()
                 )
         );
@@ -38,6 +37,7 @@ public class ChatController {
     @GetMapping("/messages/{senderId}/{recipientId}")
     public ResponseEntity<List<ChatMessage>> findChatMessages(@PathVariable String senderId,
                                                               @PathVariable String recipientId) {
+
         return ResponseEntity
                 .ok(chatMessageService.findChatMessages(senderId, recipientId));
     }
